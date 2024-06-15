@@ -1,0 +1,42 @@
+import pandas as pd
+
+# Leer el archivo CSV
+df = pd.read_csv('data.csv')
+
+# Mostrar las primeras filas para inspección inicial
+print("Datos originales:")
+print(df.head())
+
+# Eliminar filas duplicadas
+df = df.drop_duplicates()
+print("\nDespués de eliminar duplicados:")
+print(df)
+
+# Calcular la media de la columna 'age' (ignorando NaNs)
+mean_age = df['age'].mean()
+# Rellenar valores faltantes en la columna 'age' con la media
+df['age'] = df['age'].fillna(mean_age)
+print("\nDespués de rellenar valores faltantes en 'age' con la media:")
+print(df)
+
+# Rellenar valores faltantes en la columna 'city' con "Unknown"
+df['city'] = df['city'].fillna('Unknown')
+print("\nDespués de rellenar valores faltantes en 'city' con 'Unknown':")
+print(df)
+
+# Calcular la mediana de la columna 'salary' (ignorando NaNs)
+median_salary = df['salary'].median()
+# Rellenar valores faltantes en la columna 'salary' con la mediana
+df['salary'] = df['salary'].fillna(median_salary)
+print("\nDespués de rellenar valores faltantes en 'salary' con la mediana:")
+print(df)
+
+# Convertir la columna 'salary' a tipo entero
+df['salary'] = df['salary'].astype(int)
+print("\nDespués de convertir 'salary' a tipo entero:")
+print(df)
+
+# Eliminar filas con valores faltantes
+df = df.dropna()
+print("\nDespués de eliminar filas con valores faltantes:")
+print(df)
